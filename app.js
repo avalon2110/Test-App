@@ -36,7 +36,7 @@ db.on('error', function (err) {
 
 
 // main page
-app.get('/app', (req, res) =>{
+app.get('/', (req, res) =>{
 Company.updateMoney();
 Company.getCompanies((err, companies) =>{
   if(err){
@@ -80,7 +80,7 @@ app.post('/add', function (req, res) {
     if(err){
       throw err;
     } else {
-      res.redirect('/app');
+      res.redirect('/');
     }
   });
 });
@@ -100,7 +100,7 @@ app.post('/edit', (req, res) => {
     if(err){
       throw err;
     } else {
-      res.redirect('/app')
+      res.redirect('/');
     }
   });
 });

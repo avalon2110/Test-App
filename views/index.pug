@@ -13,7 +13,7 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/lol') Nodejs app
+          a.navbar-brand(href='/') Nodejs app
         #navbar.collapse.navbar-collapse
           ul#menu.nav.navbar-nav
             li
@@ -26,10 +26,11 @@ html
               a(href='#edit') Edit Company
             li
               a(href='#delete') Delete Company
+          ul.nav.navbar-nav.navbar-right
             li
-              a(href='https://github.com/' target='_blank') GitHub
+              a(href='https://github.com/avalon2110/Test-App' target='_blank') GitHub
             li
-              a(href='https://github.com/' target='_blank') ReadMe
+              a(href='https://github.com/avalon2110/Test-App#readme' target='_blank') ReadMe
     .container
       div#list
         h2 Company List
@@ -40,10 +41,10 @@ html
                 b #{company.title}
               p Personal Earnings : 
                 b #{company.earnings} $
-              p Total Earnings : 
+              p Total Earnings :  
                 b #{company.allEarnings} $
                 if company.parents
-                  p Parent ID :   
+                  p Parent Name :   
                     b #{company.parents}
                 if company.children.length > 0
                   p Children

@@ -7,7 +7,7 @@ $(document).ready(function(){
       url: '/delete/'+title,
       success: function (res) {
         alert('Deleted Company');
-        window.location.href='/app';
+        window.location.href='/';
       },
       error: function(err){
         console.log(err);
@@ -24,7 +24,7 @@ $(document).ready(function(){
       url: '/get/'+title,
       success: function (data) {
         alert(JSON.stringify(data));
-        window.location.href='/app';
+        window.location.href='/';
       },
       error: function(err){
         console.log(err);
