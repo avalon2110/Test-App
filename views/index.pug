@@ -1,0 +1,127 @@
+doctype html
+html
+  head
+    title Simple app
+    link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+    
+  body
+    nav.navbar.navbar-default
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/lol') Nodejs app
+        #navbar.collapse.navbar-collapse
+          ul#menu.nav.navbar-nav
+            li
+              a(href='#list') Company List
+            li
+              a(href='#add') Add Company
+            li
+              a(href='#view') View Company
+            li
+              a(href='#edit') Edit Company
+            li
+              a(href='#delete') Delete Company
+            li
+              a(href='https://github.com/' target='_blank') GitHub
+            li
+              a(href='https://github.com/' target='_blank') ReadMe
+    .container
+      div#list
+        h2 Company List
+        ol.list-group
+          each company, i in companies
+            li.list-group-item
+              p Name :
+                b #{company.title}
+              p Personal Earnings : 
+                b #{company.earnings} $
+              p Total Earnings : 
+                b #{company.allEarnings} $
+                if company.parents
+                  p Parent ID :   
+                    b #{company.parents}
+                if company.children.length > 0
+                  p Children
+                    each child in company.children
+                      b  | #{child.title} 
+                      b  : #{child.earnings}$
+      div#add  
+        h2 Add Company
+        form(method='POST', action='/add')
+          #form-group
+            label Title:
+            input.form-control(name='title', type='text' required)
+          #form-group
+            label Earnings:
+            input.form-control(name='earnings', type='number' required)
+          #form-group
+            label Parents:
+            label None
+              input(type='radio', name='parents', value='', checked)
+            each elem, i in companies
+              label #{elem.title}
+                input(type='radio', name='parents', value=elem.title)
+          br
+          input.btn.btn-primary(type='submit', value="Submit")
+            
+        br
+        hr 
+      div#view       
+        h2 View Company
+        #form-group
+          label Type Company Name:
+          input.form-control(id='get_title' name='title', type='text')
+        br
+        input.btn.btn-primary(id='view_btn' type='submit', value="Submit")
+        
+        br
+        hr
+      div#edit
+        h2 Edit Company
+        form(method='POST', action='/edit')
+          #form-group
+            label Type Company Name you want to edit:
+            input.form-control(id='edit_1' name='title', type='text' required)
+          #form-group
+            label Type Updated Company Name:
+            input.form-control(id='edit_2' name='newTitle', type='text' required)
+          #form-group
+            label Type Updated Company Earnings:
+            input.form-control(id='edit_3' name='newEarnings', type='number' required)
+          br
+          input.btn.btn-primary(id='edit_btn' type='submit', value="Submit")
+        
+        br
+        hr
+      div#delete    
+        h2 Delete Company
+        #form-group
+          label Type Company Name you want to delete:
+          input.form-control(id='delete_title' name='title', type='text')
+        br
+        input.btn.btn-primary(id='delete_btn' type='submit', value="Submit")
+        br
+        hr  
+    footer.footer
+      .container
+        p(id='author') Stanislav Tyrinov &copy;
+    script(src='/bower_components/jquery/dist/jquery.min.js')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+    script(src='/js/main.js')
+    script(type='text/javascript').
+      $(document).ready(function(){
+      $("#menu").on("click","a", function (event) {
+      event.preventDefault();
+      var id  = $(this).attr('href'),
+      top = $(id).offset().top;
+      $('body,html').animate({scrollTop: top}, 700);
+      });
+      });
+
+    
+    

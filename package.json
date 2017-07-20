@@ -1,0 +1,17 @@
+{
+  "name": "node_app",
+  "version": "1.0.0",
+  "description": "Node js app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Stanislav Tyrinov",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "mongoose": "*",
+    "pug": "^2.0.0-rc.2"
+  }
+}
